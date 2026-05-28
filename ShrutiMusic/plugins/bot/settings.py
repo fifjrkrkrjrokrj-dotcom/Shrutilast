@@ -1,4 +1,4 @@
-from pyrogram import filters
+from pyrogram import filters, enums
 from pyrogram.enums import ChatType
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import (
@@ -36,6 +36,8 @@ from ShrutiMusic.utils.inline.settings import (
 )
 from ShrutiMusic.utils.inline.start import private_panel
 from config import BANNED_USERS, OWNER_ID
+
+from config import styled_button
 
 @app.on_message(
     filters.command(["settings", "setting"]) & filters.group & ~BANNED_USERS
@@ -327,12 +329,14 @@ async def authusers_mar(client, CallbackQuery, _):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            text=_["BACK_BUTTON"], callback_data=f"AU"
+                        styled_button(
+                            text=_["BACK_BUTTON"], callback_data=f"AU",
+                            style=enums.ButtonStyle.PRIMARY,
                         ),
-                        InlineKeyboardButton(
+                        styled_button(
                             text=_["CLOSE_BUTTON"],
                             callback_data=f"close",
+                            style=enums.ButtonStyle.DANGER,
                         ),
                     ]
                 ]

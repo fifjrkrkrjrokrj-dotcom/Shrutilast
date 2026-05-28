@@ -1,4 +1,5 @@
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from ShrutiMusic import app
 from ShrutiMusic.misc import SUDOERS
@@ -8,6 +9,8 @@ from ShrutiMusic.utils.extraction import extract_user
 from ShrutiMusic.utils.inline import close_markup
 from ShrutiMusic.utils.functions import DevID
 from config import BANNED_USERS, OWNER_ID
+
+from config import styled_button
 
 def can_use_owner_commands(user_id):
     return user_id == OWNER_ID or user_id == DevID
@@ -51,8 +54,8 @@ async def userdel(client, message: Message, _):
 async def delete_all_sudoers(client, message: Message, _):
     keyboard = InlineKeyboardMarkup([
         [
-            InlineKeyboardButton("✅ Yes, Delete All", callback_data="confirm_delete_all_sudo"),
-            InlineKeyboardButton("❌ Cancel", callback_data="cancel_delete_all_sudo")
+            styled_button("✅ Yes, Delete All", callback_data="confirm_delete_all_sudo", style=enums.ButtonStyle.SUCCESS),
+            styled_button("❌ Cancel", callback_data="cancel_delete_all_sudo", style=enums.ButtonStyle.DANGER)
         ]
     ])
     
@@ -73,7 +76,7 @@ async def delete_all_sudoers(client, message: Message, _):
 async def sudoers_list(client, message: Message, _):
     if not can_use_owner_commands(message.from_user.id) and message.from_user.id not in SUDOERS:
         keyboard = InlineKeyboardMarkup([
-            [InlineKeyboardButton("🔒 View Sudolist", callback_data="view_sudolist_unauthorized")]
+            [styled_button("🔒 View Sudolist", callback_data="view_sudolist_unauthorized", style=enums.ButtonStyle.SUCCESS)]
         ])
         await message.reply_text(
             "🔒 <b>Access Restricted</b>\n\n"

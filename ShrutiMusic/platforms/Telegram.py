@@ -5,6 +5,8 @@ from typing import Union
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Voice
 
+from config import styled_button
+
 import config
 from ShrutiMusic import app
 from ShrutiMusic.utils.formatters import (
@@ -108,9 +110,10 @@ class TeleAPI:
                 upl = InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton(
+                            styled_button(
                                 text="ᴄᴀɴᴄᴇʟ",
                                 callback_data="stop_downloading",
+                                style="danger",
                             ),
                         ]
                     ]

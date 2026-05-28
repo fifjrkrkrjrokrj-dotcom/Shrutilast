@@ -1,5 +1,6 @@
 import random
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import LOG_GROUP_ID
 from ShrutiMusic import app
@@ -38,8 +39,8 @@ async def join_watcher(_, message):
                 
                 buttons = []
                 if message.from_user.id:
-                    buttons.append([InlineKeyboardButton("Added By", 
-                                    url=f"tg://openmessage?user_id={message.from_user.id}")])
+                    buttons.append([styled_button("Added By", 
+                                    url=f"tg://openmessage?user_id={message.from_user.id}", style=enums.ButtonStyle.PRIMARY)])
                 
                 await app.send_photo(
                     LOG_GROUP_ID,
@@ -57,6 +58,8 @@ async def join_watcher(_, message):
 
 from pyrogram.types import Message
 from ShrutiMusic.utils.database import delete_served_chat, get_assistant
+
+from config import styled_button
 
 photo = [
     "https://telegra.ph/file/1949480f01355b4e87d26.jpg",

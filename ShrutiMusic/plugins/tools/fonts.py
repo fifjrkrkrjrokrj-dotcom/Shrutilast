@@ -2,6 +2,9 @@ from ShrutiMusic import app
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters
 
+from pyrogram import enums
+from config import styled_button
+
 class Fonts:
     def typewriter(text):
         style = {
@@ -2368,41 +2371,41 @@ class Fonts:
 async def style_buttons(c, m, cb=False):
     buttons = [
         [
-            InlineKeyboardButton("𝚃𝚢𝚙𝚎𝚠𝚛𝚒𝚝𝚎𝚛", callback_data="style+typewriter"),
-            InlineKeyboardButton("𝕆𝕦𝕥𝕝𝕚𝕟𝕖", callback_data="style+outline"),
-            InlineKeyboardButton("𝐒𝐞𝐫𝐢𝐟", callback_data="style+serif"),
+            styled_button("𝚃𝚢𝚙𝚎𝚠𝚛𝚒𝚝𝚎𝚛", callback_data="style+typewriter", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝕆𝕦𝕥𝕝𝕚𝕟𝕖", callback_data="style+outline", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝐒𝐞𝐫𝐢𝐟", callback_data="style+serif", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("𝑺𝒆𝒓𝒊𝒇", callback_data="style+bold_cool"),
-            InlineKeyboardButton("𝑆𝑒𝑟𝑖𝑓", callback_data="style+cool"),
-            InlineKeyboardButton("Sᴍᴀʟʟ Cᴀᴘs", callback_data="style+small_cap"),
+            styled_button("𝑺𝒆𝒓𝒊𝒇", callback_data="style+bold_cool", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝑆𝑒𝑟𝑖𝑓", callback_data="style+cool", style=enums.ButtonStyle.PRIMARY),
+            styled_button("Sᴍᴀʟʟ Cᴀᴘs", callback_data="style+small_cap", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("𝓈𝒸𝓇𝒾𝓅𝓉", callback_data="style+script"),
-            InlineKeyboardButton("𝓼𝓬𝓻𝓲𝓹𝓽", callback_data="style+script_bolt"),
-            InlineKeyboardButton("ᵗⁱⁿʸ", callback_data="style+tiny"),
+            styled_button("𝓈𝒸𝓇𝒾𝓅𝓉", callback_data="style+script", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝓼𝓬𝓻𝓲𝓹𝓽", callback_data="style+script_bolt", style=enums.ButtonStyle.PRIMARY),
+            styled_button("ᵗⁱⁿʸ", callback_data="style+tiny", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("ᑕOᗰIᑕ", callback_data="style+comic"),
-            InlineKeyboardButton("𝗦𝗮𝗻𝘀", callback_data="style+sans"),
-            InlineKeyboardButton("𝙎𝙖𝙣𝙨", callback_data="style+slant_sans"),
+            styled_button("ᑕOᗰIᑕ", callback_data="style+comic", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝗦𝗮𝗻𝘀", callback_data="style+sans", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝙎𝙖𝙣𝙨", callback_data="style+slant_sans", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("𝘚𝘢𝘯𝘴", callback_data="style+slant"),
-            InlineKeyboardButton("𝖲𝖺𝗇𝗌", callback_data="style+sim"),
-            InlineKeyboardButton("Ⓒ︎Ⓘ︎Ⓡ︎Ⓒ︎Ⓛ︎Ⓔ︎Ⓢ︎", callback_data="style+circles"),
+            styled_button("𝘚𝘢𝘯𝘴", callback_data="style+slant", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝖲𝖺𝗇𝗌", callback_data="style+sim", style=enums.ButtonStyle.PRIMARY),
+            styled_button("Ⓒ︎Ⓘ︎Ⓡ︎Ⓒ︎Ⓛ︎Ⓔ︎Ⓢ︎", callback_data="style+circles", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("🅒︎🅘︎🅡︎🅒︎🅛︎🅔︎🅢︎", callback_data="style+circle_dark"),
-            InlineKeyboardButton("𝔊𝔬𝔱𝔥𝔦𝔠", callback_data="style+gothic"),
-            InlineKeyboardButton("𝕲𝖔𝖙𝖍𝖎𝖈", callback_data="style+gothic_bolt"),
+            styled_button("🅒︎🅘︎🅡︎🅒︎🅛︎🅔︎🅢︎", callback_data="style+circle_dark", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝔊𝔬𝔱𝔥𝔦𝔠", callback_data="style+gothic", style=enums.ButtonStyle.PRIMARY),
+            styled_button("𝕲𝖔𝖙𝖍𝖎𝖈", callback_data="style+gothic_bolt", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton("C͜͡l͜͡o͜͡u͜͡d͜͡s͜͡", callback_data="style+cloud"),
-            InlineKeyboardButton("H̆̈ă̈p̆̈p̆̈y̆̈", callback_data="style+happy"),
-            InlineKeyboardButton("S̑̈ȃ̈d̑̈", callback_data="style+sad"),
+            styled_button("C͜͡l͜͡o͜͡u͜͡d͜͡s͜͡", callback_data="style+cloud", style=enums.ButtonStyle.PRIMARY),
+            styled_button("H̆̈ă̈p̆̈p̆̈y̆̈", callback_data="style+happy", style=enums.ButtonStyle.PRIMARY),
+            styled_button("S̑̈ȃ̈d̑̈", callback_data="style+sad", style=enums.ButtonStyle.PRIMARY),
         ],
-        [InlineKeyboardButton("ɴᴇxᴛ ➻", callback_data="nxt")],
+        [styled_button("ɴᴇxᴛ ➻", callback_data="nxt", style=enums.ButtonStyle.PRIMARY)],
     ]
     if not cb:
         await m.reply_text(
@@ -2419,36 +2422,36 @@ async def nxt(c, m):
     if m.data == "nxt":
         buttons = [
             [
-                InlineKeyboardButton("🇸 🇵 🇪 🇨 🇮 🇦 🇱 ", callback_data="style+special"),
-                InlineKeyboardButton("🅂🅀🅄🄰🅁🄴🅂", callback_data="style+squares"),
-                InlineKeyboardButton("🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎", callback_data="style+squares_bold"),
+                styled_button("🇸 🇵 🇪 🇨 🇮 🇦 🇱 ", callback_data="style+special", style=enums.ButtonStyle.PRIMARY),
+                styled_button("🅂🅀🅄🄰🅁🄴🅂", callback_data="style+squares", style=enums.ButtonStyle.PRIMARY),
+                styled_button("🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎", callback_data="style+squares_bold", style=enums.ButtonStyle.PRIMARY),
             ],
             [
-                InlineKeyboardButton("ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ", callback_data="style+andalucia"),
-                InlineKeyboardButton("爪卂几ᘜ卂", callback_data="style+manga"),
-                InlineKeyboardButton("S̾t̾i̾n̾k̾y̾", callback_data="style+stinky"),
+                styled_button("ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ", callback_data="style+andalucia", style=enums.ButtonStyle.PRIMARY),
+                styled_button("爪卂几ᘜ卂", callback_data="style+manga", style=enums.ButtonStyle.PRIMARY),
+                styled_button("S̾t̾i̾n̾k̾y̾", callback_data="style+stinky", style=enums.ButtonStyle.PRIMARY),
             ],
             [
-                InlineKeyboardButton("B̥ͦu̥ͦb̥ͦb̥ͦl̥ͦe̥ͦs̥ͦ", callback_data="style+bubbles"),
-                InlineKeyboardButton("U͟n͟d͟e͟r͟l͟i͟n͟e͟", callback_data="style+underline"),
-                InlineKeyboardButton("꒒ꍏꀷꌩꌃꀎꁅ", callback_data="style+ladybug"),
+                styled_button("B̥ͦu̥ͦb̥ͦb̥ͦl̥ͦe̥ͦs̥ͦ", callback_data="style+bubbles", style=enums.ButtonStyle.PRIMARY),
+                styled_button("U͟n͟d͟e͟r͟l͟i͟n͟e͟", callback_data="style+underline", style=enums.ButtonStyle.PRIMARY),
+                styled_button("꒒ꍏꀷꌩꌃꀎꁅ", callback_data="style+ladybug", style=enums.ButtonStyle.PRIMARY),
             ],
             [
-                InlineKeyboardButton("R҉a҉y҉s҉", callback_data="style+rays"),
-                InlineKeyboardButton("B҈i҈r҈d҈s҈", callback_data="style+birds"),
-                InlineKeyboardButton("S̸l̸a̸s̸h̸", callback_data="style+slash"),
+                styled_button("R҉a҉y҉s҉", callback_data="style+rays", style=enums.ButtonStyle.PRIMARY),
+                styled_button("B҈i҈r҈d҈s҈", callback_data="style+birds", style=enums.ButtonStyle.PRIMARY),
+                styled_button("S̸l̸a̸s̸h̸", callback_data="style+slash", style=enums.ButtonStyle.PRIMARY),
             ],
             [
-                InlineKeyboardButton("s⃠t⃠o⃠p⃠", callback_data="style+stop"),
-                InlineKeyboardButton("S̺͆k̺͆y̺͆l̺͆i̺͆n̺͆e̺͆", callback_data="style+skyline"),
-                InlineKeyboardButton("A͎r͎r͎o͎w͎s͎", callback_data="style+arrows"),
+                styled_button("s⃠t⃠o⃠p⃠", callback_data="style+stop", style=enums.ButtonStyle.PRIMARY),
+                styled_button("S̺͆k̺͆y̺͆l̺͆i̺͆n̺͆e̺͆", callback_data="style+skyline", style=enums.ButtonStyle.PRIMARY),
+                styled_button("A͎r͎r͎o͎w͎s͎", callback_data="style+arrows", style=enums.ButtonStyle.PRIMARY),
             ],
             [
-                InlineKeyboardButton("ዪሀክቿነ", callback_data="style+qvnes"),
-                InlineKeyboardButton("S̶t̶r̶i̶k̶e̶", callback_data="style+strike"),
-                InlineKeyboardButton("F༙r༙o༙z༙e༙n༙", callback_data="style+frozen"),
+                styled_button("ዪሀክቿነ", callback_data="style+qvnes", style=enums.ButtonStyle.PRIMARY),
+                styled_button("S̶t̶r̶i̶k̶e̶", callback_data="style+strike", style=enums.ButtonStyle.PRIMARY),
+                styled_button("F༙r༙o༙z༙e༙n༙", callback_data="style+frozen", style=enums.ButtonStyle.PRIMARY),
             ],
-            [InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="nxt+0")],
+            [styled_button("ʙᴀᴄᴋ", callback_data="nxt+0", style=enums.ButtonStyle.PRIMARY)],
         ]
         await m.answer()
         await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))

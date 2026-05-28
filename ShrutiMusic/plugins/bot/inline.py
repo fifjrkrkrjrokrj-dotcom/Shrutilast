@@ -8,6 +8,9 @@ from ShrutiMusic import app
 from ShrutiMusic.utils.inlinequery import answer
 from config import BANNED_USERS
 
+from config import styled_button
+
+from pyrogram import enums
 @app.on_inline_query(~BANNED_USERS)
 async def inline_query_handler(client, query):
     text = query.query.strip().lower()
@@ -33,9 +36,10 @@ async def inline_query_handler(client, query):
             buttons = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
+                        styled_button(
                             text="ʏᴏᴜᴛᴜʙᴇ 🎄",
                             url=link,
+                            style=enums.ButtonStyle.PRIMARY,
                         )
                     ],
                 ]

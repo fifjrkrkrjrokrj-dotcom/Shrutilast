@@ -1,8 +1,11 @@
 import os
 import requests
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from ShrutiMusic import app
+
+from config import styled_button
 
 def upload_file(file_path):
     url = "https://catbox.moe/user/api.php"
@@ -54,7 +57,7 @@ async def get_link_group(client, message):
                     f"🌐 | <a href='{upload_url}'>👉 ʏᴏᴜʀ ʟɪɴᴋ ᴛᴀᴘ ʜᴇʀᴇ 👈</a>",
                     disable_web_page_preview=False,
                     reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("🌍 ᴘʀᴇss ᴀɴᴅ ʜᴏʟᴅ ᴛᴏ ᴠɪᴇᴡ", url=upload_url)]]
+                        [[styled_button("🌍 ᴘʀᴇss ᴀɴᴅ ʜᴏʟᴅ ᴛᴏ ᴠɪᴇᴡ", url=upload_url, style=enums.ButtonStyle.PRIMARY)]]
                     ),
                 )
             else:

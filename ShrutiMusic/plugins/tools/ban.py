@@ -1,7 +1,7 @@
 import asyncio
 from contextlib import suppress
 
-from pyrogram import filters
+from pyrogram import filters, enums
 from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 from pyrogram.types import (
     CallbackQuery,
@@ -388,8 +388,8 @@ async def pin(_, message: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="ʏᴇs", callback_data="unpin_yes"),
-                        InlineKeyboardButton(text="ɴᴏ", callback_data="unpin_no"),
+                        styled_button(text="ʏᴇs", callback_data="unpin_yes", style=enums.ButtonStyle.SUCCESS),
+                        styled_button(text="ɴᴏ", callback_data="unpin_no", style=enums.ButtonStyle.DANGER),
                     ],
                 ]
             ),
@@ -684,6 +684,8 @@ from pyrogram.errors import UserNotParticipant, ChatAdminRequired, UserAlreadyPa
 
 # Create a bot instance
 from ShrutiMusic import app 
+
+from config import styled_button
 
 @app.on_message(filters.command("unbanme"))
 async def unbanme(client, message):

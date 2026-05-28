@@ -46,6 +46,8 @@ from ShrutiMusic.utils.inline import botplaylist_markup
 from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
 from strings import get_string
 
+from config import styled_button
+
 links = {}
 
 
@@ -57,9 +59,10 @@ def PlayWrapper(command):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
+                        styled_button(
                             text="ʜᴏᴡ ᴛᴏ ғɪx ?",
                             callback_data="AnonymousAdmin",
+                            style=enums.ButtonStyle.PRIMARY,
                         ),
                     ]
                 ]

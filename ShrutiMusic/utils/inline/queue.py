@@ -24,7 +24,10 @@ from typing import Union
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from config import styled_button
 
+
+from pyrogram import enums
 def queue_markup(
     _,
     DURATION,
@@ -35,31 +38,36 @@ def queue_markup(
 ):
     not_dur = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["QU_B_1"],
                 callback_data=f"GetQueued {CPLAY}|{videoid}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data="close",
+                style=enums.ButtonStyle.DANGER,
             ),
         ]
     ]
     dur = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["QU_B_2"].format(played, dur),
                 callback_data="GetTimer",
+                style=enums.ButtonStyle.PRIMARY,
             )
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["QU_B_1"],
                 callback_data=f"GetQueued {CPLAY}|{videoid}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data="close",
+                style=enums.ButtonStyle.DANGER,
             ),
         ],
     ]
@@ -71,13 +79,15 @@ def queue_back_markup(_, CPLAY):
     upl = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(
+                styled_button(
                     text=_["BACK_BUTTON"],
                     callback_data=f"queue_back_timer {CPLAY}",
+                    style=enums.ButtonStyle.PRIMARY,
                 ),
-                InlineKeyboardButton(
+                styled_button(
                     text=_["CLOSE_BUTTON"],
                     callback_data="close",
+                    style=enums.ButtonStyle.DANGER,
                 ),
             ]
         ]
@@ -88,9 +98,10 @@ def queue_back_markup(_, CPLAY):
 def aq_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                     text=_["CLOSE_BUTTON"],
                     callback_data="close",
+                style=enums.ButtonStyle.DANGER,
             ),
         ],
     ]

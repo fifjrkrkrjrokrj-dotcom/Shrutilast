@@ -1,11 +1,10 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, ChatPermissions
 from pymongo import MongoClient
 from ShrutiMusic import app
 import asyncio
 from ShrutiMusic.misc import SUDOERS
-from config import MONGO_DB_URI
-from pyrogram.enums import ChatMembersFilter
+from config import MONGO_DB_URI, styled_button
 from pyrogram.errors import (
     ChatAdminRequired,
     UserNotParticipant,
@@ -144,7 +143,7 @@ async def check_forcesub(client: Client, message: Message):
         await message.reply_photo(
             photo="https://envs.sh/Tn_.jpg",
             caption=(f"**👋 ʜᴇʟʟᴏ {message.from_user.mention},**\n\n**ʏᴏᴜ ɴᴇᴇᴅ ᴛᴏ ᴊᴏɪɴ ᴛʜᴇ [ᴄʜᴀɴɴᴇʟ]({channel_url}) ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇs ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ.**"),
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("๏ ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ๏", url=channel_url)]]),
+            reply_markup=InlineKeyboardMarkup([[styled_button("๏ ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ๏", url=channel_url, style=enums.ButtonStyle.PRIMARY)]]),
         )
         await asyncio.sleep(1)
     except ChatAdminRequired:

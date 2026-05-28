@@ -1,3 +1,4 @@
+from pyrogram import enums
 from pyrogram.enums import ChatType, ParseMode
 from pyrogram.filters import command
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -5,14 +6,17 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from ShrutiMusic import app
 from ShrutiMusic.utils.functions import MARKDOWN
 
+from config import styled_button
+
 @app.on_message(command("markdownhelp"))
 async def mkdwnhelp(_, m: Message):
     keyb = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(
+                styled_button(
                     text="Click Here!",
                     url=f"http://t.me/{app.username}?start=mkdwn_help",
+                    style=enums.ButtonStyle.PRIMARY,
                 )
             ]
         ]

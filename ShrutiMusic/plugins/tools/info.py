@@ -5,6 +5,8 @@ from datetime import datetime
 from pyrogram import filters, types, enums
 from ShrutiMusic import app
 
+from config import styled_button
+
 user_last_message_time = {}
 user_command_count = {}
 SPAM_THRESHOLD = 2
@@ -109,9 +111,10 @@ async def userinfo(_, message):
 
         btn = [
             [
-                types.InlineKeyboardButton(
+                types.styled_button(
                     "🌐 ᴠɪᴇᴡ ᴘʀᴏғɪʟᴇ",
                     url=f"https://t.me/{target.username}" if target.username else "https://t.me/",
+                    style=enums.ButtonStyle.PRIMARY,
                 )
             ]
         ]

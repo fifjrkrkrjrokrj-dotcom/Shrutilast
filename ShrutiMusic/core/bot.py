@@ -6,6 +6,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import config
 from ..logging import LOGGER
 
+from config import styled_button
+
 class Nand(Client):
     def __init__(self):
         LOGGER(__name__).info(f"Starting bot...")
@@ -30,9 +32,10 @@ class Nand(Client):
         button = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
+                    styled_button(
                         text="Add Me To Your Group",
                         url=f"https://t.me/{self.username}?startgroup=true",
+                        style="success",
                     )
                 ]
             ]

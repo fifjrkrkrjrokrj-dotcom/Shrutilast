@@ -40,6 +40,8 @@ from strings import get_string
 
 from ..formatters import int_to_alpha
 
+from config import styled_button
+
 
 def AdminRightsCheck(mystic):
     async def wrapper(client, message):
@@ -64,9 +66,10 @@ def AdminRightsCheck(mystic):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
+                        styled_button(
                             text="ʜᴏᴡ ᴛᴏ ғɪx ?",
                             callback_data="AnonymousAdmin",
+                            style=enums.ButtonStyle.PRIMARY,
                         ),
                     ]
                 ]
@@ -109,9 +112,10 @@ def AdminRightsCheck(mystic):
                             upl = InlineKeyboardMarkup(
                                 [
                                     [
-                                        InlineKeyboardButton(
+                                        styled_button(
                                             text="ᴠᴏᴛᴇ",
                                             callback_data=f"ADMIN  UpVote|{chat_id}_{MODE}",
+                                            style=enums.ButtonStyle.PRIMARY,
                                         ),
                                     ]
                                 ]
@@ -160,9 +164,10 @@ def AdminActual(mystic):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
+                        styled_button(
                             text="ʜᴏᴡ ᴛᴏ ғɪx ?",
                             callback_data="AnonymousAdmin",
+                            style=enums.ButtonStyle.PRIMARY,
                         ),
                     ]
                 ]

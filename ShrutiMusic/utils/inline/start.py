@@ -23,17 +23,21 @@ from pyrogram.types import InlineKeyboardButton
 import config
 from ShrutiMusic import app
 
+from config import styled_button
+
+from pyrogram import enums
 def start_panel(_):
     buttons = [
         [
-            InlineKeyboardButton(
-                text=_["S_B_1"], url=f"https://t.me/{app.username}?startgroup=true"
+            styled_button(
+                text=_["S_B_1"], url=f"https://t.me/{app.username}?startgroup=true",
+                style=enums.ButtonStyle.SUCCESS,
             ),
-            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_GROUP),
+            styled_button(text=_["S_B_2"], url=config.SUPPORT_GROUP, style=enums.ButtonStyle.SUCCESS),
         ],
         [
-            InlineKeyboardButton(text=_["E_X_1"], url=config.UPSTREAM_REPO),
-            InlineKeyboardButton(text=_["S_B_11"], callback_data="about_page")  # About button
+            styled_button(text=_["E_X_1"], url=config.UPSTREAM_REPO, style=enums.ButtonStyle.PRIMARY),
+            styled_button(text=_["S_B_11"], callback_data="about_page", style=enums.ButtonStyle.PRIMARY)  # About button
         ],
     ]
     return buttons
@@ -41,30 +45,34 @@ def start_panel(_):
 def private_panel(_):
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["S_B_3"],
                 url=f"https://t.me/{app.username}?startgroup=true",
+                style=enums.ButtonStyle.SUCCESS,
             )
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["S_B_11"],
-                callback_data="about_page"
+                callback_data="about_page",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["S_B_12"],
-                callback_data="owner_page"
+                callback_data="owner_page",
+                style=enums.ButtonStyle.PRIMARY,
             )
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["E_X_1"],
-                callback_data="fork_repo"
+                callback_data="fork_repo",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(text=_["S_B_5"], user_id=config.OWNER_ID),
+            styled_button(text=_["S_B_5"], user_id=config.OWNER_ID, style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton(text=_["S_B_4"], callback_data="help_page_1")
+            styled_button(text=_["S_B_4"], callback_data="help_page_1", style=enums.ButtonStyle.PRIMARY)
         ],
     ]
     return buttons
@@ -72,11 +80,11 @@ def private_panel(_):
 def about_panel(_):
     buttons = [
         [
-            InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHANNEL),
-            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_GROUP),
+            styled_button(text=_["S_B_6"], url=config.SUPPORT_CHANNEL, style=enums.ButtonStyle.PRIMARY),
+            styled_button(text=_["S_B_2"], url=config.SUPPORT_GROUP, style=enums.ButtonStyle.SUCCESS),
         ],
         [
-            InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data="settingsback_helper")
+            styled_button(text=_["BACK_BUTTON"], callback_data="settingsback_helper", style=enums.ButtonStyle.PRIMARY)
         ]
     ]
     return buttons
@@ -84,15 +92,15 @@ def about_panel(_):
 def owner_panel(_):
     buttons = [
         [
-            InlineKeyboardButton(text=_["S_H_1"], url=config.INSTAGRAM),
-            InlineKeyboardButton(text=_["S_H_2"], url=config.YOUTUBE),
+            styled_button(text=_["S_H_1"], url=config.INSTAGRAM, style=enums.ButtonStyle.PRIMARY),
+            styled_button(text=_["S_H_2"], url=config.YOUTUBE, style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton(text=_["S_H_3"], url=config.GITHUB),
-            InlineKeyboardButton(text=_["S_H_4"], url=config.DONATE),
+            styled_button(text=_["S_H_3"], url=config.GITHUB, style=enums.ButtonStyle.PRIMARY),
+            styled_button(text=_["S_H_4"], url=config.DONATE, style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data="settingsback_helper")
+            styled_button(text=_["BACK_BUTTON"], callback_data="settingsback_helper", style=enums.ButtonStyle.PRIMARY)
         ]
     ]
     return buttons

@@ -1,5 +1,6 @@
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import InlineKeyboardButton, Message
 
 from ShrutiMusic import app
@@ -8,27 +9,29 @@ from ShrutiMusic.utils.decorators import ActualAdminCB, language, languageCB
 from config import BANNED_USERS
 from strings import get_string, languages_present
 
+from config import styled_button
+
 def lanuages_keyboard(_):
     keyboard = InlineKeyboard(row_width=2)
     keyboard.add(
         *[
-            (
-                InlineKeyboardButton(
-                    text=languages_present[i],
-                    callback_data=f"languages:{i}",
-                )
+            styled_button(
+                text=languages_present[i],
+                callback_data=f"languages:{i}",
+                style=enums.ButtonStyle.PRIMARY,
             )
             for i in languages_present
         ]
     )
     keyboard.row(
-        InlineKeyboardButton(
+        styled_button(
             text=_["BACK_BUTTON"],
             callback_data=f"settingsback_helper",
+            style=enums.ButtonStyle.PRIMARY,
         ),
-        InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data=f"close"),
+        styled_button(text=_["CLOSE_BUTTON"], callback_data=f"close", style=enums.ButtonStyle.DANGER),
     )
-    return keyboard
+    return keyboard.markup
 
 @app.on_message(filters.command(["lang", "setlang", "language"]) & ~BANNED_USERS)
 @language

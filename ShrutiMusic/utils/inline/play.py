@@ -25,23 +25,29 @@ from pyrogram.types import InlineKeyboardButton
 from ShrutiMusic.utils.formatters import time_to_seconds
 from config import BOT_USERNAME, SUPPORT_GROUP, SUPPORT_CHANNEL
 
+from config import styled_button
 
+
+from pyrogram import enums
 def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_1"],
                 callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_2"],
                 callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
+                style=enums.ButtonStyle.DANGER,
             )
         ],
     ]
@@ -76,23 +82,24 @@ def stream_markup_timer(_, chat_id, played, dur):
 
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=f"{played} {bar} {dur}",
-                url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
+                style=enums.ButtonStyle.PRIMARY,
             )
         ],
         [
-            InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
-            InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
-            InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+            styled_button(text="▷", callback_data=f"ADMIN Resume|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="II", callback_data=f"ADMIN Pause|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="↻", callback_data=f"ADMIN Replay|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="▢", callback_data=f"ADMIN Stop|{chat_id}", style=enums.ButtonStyle.PRIMARY),
         ],
         [
-            InlineKeyboardButton(text="💬 sᴜᴘᴘᴏʀᴛ", url=SUPPORT_GROUP),
-            InlineKeyboardButton(text="📢 ᴄʜᴀɴɴᴇʟ", url=SUPPORT_CHANNEL),
+            styled_button(text="💬 sᴜᴘᴘᴏʀᴛ", url=SUPPORT_GROUP, style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="📢 ᴄʜᴀɴɴᴇʟ", url=SUPPORT_CHANNEL, style=enums.ButtonStyle.PRIMARY),
         ],
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
+        [styled_button(text=_["CLOSE_BUTTON"], callback_data="close", style=enums.ButtonStyle.DANGER)],
     ]
     return buttons
 
@@ -100,13 +107,13 @@ def stream_markup_timer(_, chat_id, played, dur):
 def stream_markup(_, chat_id):
     buttons = [
         [
-            InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
-            InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
-            InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+            styled_button(text="▷", callback_data=f"ADMIN Resume|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="II", callback_data=f"ADMIN Pause|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="↻", callback_data=f"ADMIN Replay|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}", style=enums.ButtonStyle.PRIMARY),
+            styled_button(text="▢", callback_data=f"ADMIN Stop|{chat_id}", style=enums.ButtonStyle.PRIMARY),
         ],
-        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
+        [styled_button(text=_["CLOSE_BUTTON"], callback_data="close", style=enums.ButtonStyle.DANGER)],
     ]
     return buttons
 
@@ -114,19 +121,22 @@ def stream_markup(_, chat_id):
 def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_1"],
                 callback_data=f"NandPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_2"],
                 callback_data=f"NandPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
+                style=enums.ButtonStyle.DANGER,
             ),
         ],
     ]
@@ -136,15 +146,17 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
 def livestream_markup(_, videoid, user_id, mode, channel, fplay):
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_3"],
                 callback_data=f"LiveStream {videoid}|{user_id}|{mode}|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {videoid}|{user_id}",
+                style=enums.ButtonStyle.DANGER,
             ),
         ],
     ]
@@ -155,27 +167,32 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
     query = f"{query[:20]}"
     buttons = [
         [
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_1"],
                 callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["P_B_2"],
                 callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
         ],
         [
-            InlineKeyboardButton(
+            styled_button(
                 text="◁",
                 callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text=_["CLOSE_BUTTON"],
                 callback_data=f"forceclose {query}|{user_id}",
+                style=enums.ButtonStyle.DANGER,
             ),
-            InlineKeyboardButton(
+            styled_button(
                 text="▷",
                 callback_data=f"slider F|{query_type}|{query}|{user_id}|{channel}|{fplay}",
+                style=enums.ButtonStyle.PRIMARY,
             ),
         ],
     ]

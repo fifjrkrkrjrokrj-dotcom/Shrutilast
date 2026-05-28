@@ -1,6 +1,6 @@
 import time
 
-from pyrogram import filters
+from pyrogram import filters, enums
 from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from py_yt import VideosSearch
@@ -22,6 +22,8 @@ from ShrutiMusic.utils.formatters import get_readable_time
 from ShrutiMusic.utils.inline import help_pannel_page1, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
+
+from config import styled_button
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
@@ -72,8 +74,8 @@ async def start_pm(client, message: Message, _):
             key = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text=_["S_B_8"], url=link),
-                        InlineKeyboardButton(text=_["S_B_9"], url=config.SUPPORT_GROUP),
+                        styled_button(text=_["S_B_8"], url=link, style=enums.ButtonStyle.PRIMARY),
+                        styled_button(text=_["S_B_9"], url=config.SUPPORT_GROUP, style=enums.ButtonStyle.PRIMARY),
                     ],
                 ]
             )

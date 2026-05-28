@@ -59,8 +59,11 @@ async def video_downloader(_, message: Message):
         await msg.edit(f"❌ Error: {str(e)}")
 
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from ShrutiMusic import app
+
+from config import styled_button
 
 REPO_VIDEO = "https://files.catbox.moe/aoafwn.mp4"
 
@@ -76,13 +79,15 @@ async def send_repo(_, message: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
+                    styled_button(
                         "👑 Owner",
-                        url="https://t.me/Katillll"
+                        url="https://t.me/Katillll",
+                        style=enums.ButtonStyle.PRIMARY,
                     ),
-                    InlineKeyboardButton(
+                    styled_button(
                         "💸 Buy Now",
-                        url="https://t.me/Katillll"
+                        url="https://t.me/Katillll",
+                        style=enums.ButtonStyle.DANGER,
                     )
                 ]
             ]

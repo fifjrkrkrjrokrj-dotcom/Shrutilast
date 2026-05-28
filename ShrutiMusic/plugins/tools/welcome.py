@@ -1,20 +1,14 @@
 import os
 from unidecode import unidecode
 from PIL import ImageDraw, Image, ImageFont, ImageChops
-from pyrogram import *
-from pyrogram.types import *
+from pyrogram import enums, filters
+from pyrogram.types import ChatMemberUpdated, InlineKeyboardMarkup, Message
 from logging import getLogger
 from ShrutiMusic import LOGGER
-from pyrogram.types import Message
 from ShrutiMusic.misc import SUDOERS
 from ShrutiMusic import app
-from ShrutiMusic.utils.database import *
-from ShrutiMusic.utils.database import db
-
-try:
-    wlcm = db.welcome
-except:
-    from ShrutiMusic.utils.database import welcome as wlcm
+from ShrutiMusic.utils.database import welcomedb
+from config import styled_button
 
 LOGGER = getLogger(__name__)
 
@@ -63,19 +57,19 @@ async def auto_state(_, message):
     user = await app.get_chat_member(message.chat.id, message.from_user.id)
 
     if user.status in (enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER):
-        A = await wlcm.find_one({"chat_id": chat_id})
+        A = await welcomedb.find_one({"chat_id": chat_id})
         state = message.text.split(None, 1)[1].strip().lower()
 
         if state == "on":
             if A and not A.get("disabled", False):
                 return await message.reply_text("✦ Special Welcome Already Enabled")
-            await wlcm.update_one({"chat_id": chat_id}, {"$set": {"disabled": False}}, upsert=True)
+            await welcomedb.update_one({"chat_id": chat_id}, {"$set": {"disabled": False}}, upsert=True)
             await message.reply_text(f"✦ Enabled Special Welcome in {message.chat.title}")
 
         elif state == "off":
             if A and A.get("disabled", False):
                 return await message.reply_text("✦ Special Welcome Already Disabled")
-            await wlcm.update_one({"chat_id": chat_id}, {"$set": {"disabled": True}}, upsert=True)
+            await welcomedb.update_one({"chat_id": chat_id}, {"$set": {"disabled": True}}, upsert=True)
             await message.reply_text(f"✦ Disabled Special Welcome in {message.chat.title}")
 
         else:
@@ -86,7 +80,7 @@ async def auto_state(_, message):
 @app.on_chat_member_updated(filters.group, group=-3)
 async def greet_group(_, member: ChatMemberUpdated):
     chat_id = member.chat.id
-    A = await wlcm.find_one({"chat_id": chat_id})
+    A = await welcomedb.find_one({"chat_id": chat_id})
 
     if A and A.get("disabled", False):  
         return
@@ -127,7 +121,7 @@ async def greet_group(_, member: ChatMemberUpdated):
 
 <b><u>ʜᴏᴘᴇ ʏᴏᴜ ғɪɴᴅ ɢᴏᴏᴅ ᴠɪʙᴇs, ɴᴇᴡ ғʀɪᴇɴᴅs, ᴀɴᴅ ʟᴏᴛs ᴏғ ғᴜɴ ʜᴇʀᴇ!</u> 🌟</b>""",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton("🎵 ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ 🎵", url=f"https://t.me/{app.username}?startgroup=True")]
+                [styled_button("🎵 ᴀᴅᴅ ᴍᴇ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ 🎵", url=f"https://t.me/{app.username}?startgroup=True", style=enums.ButtonStyle.PRIMARY)]
             ]),
         )
 

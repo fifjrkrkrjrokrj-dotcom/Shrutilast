@@ -66,11 +66,11 @@ async def fork_repo_callback(client, query):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("🚀 Fᴏʀᴋ Rᴇᴘᴏ", url="https://t.me/Katillll"),
-                    InlineKeyboardButton("⚡ Hᴇʀᴏᴋᴜ Dᴇᴘʟᴏʏ", url="https://t.me/Katillll")
+                    styled_button("🚀 Fᴏʀᴋ Rᴇᴘᴏ", url="https://t.me/Katillll", style=enums.ButtonStyle.PRIMARY),
+                    styled_button("⚡ Hᴇʀᴏᴋᴜ Dᴇᴘʟᴏʏ", url="https://t.me/Katillll", style=enums.ButtonStyle.PRIMARY)
                 ],
                 [
-                    InlineKeyboardButton("🔙 Bᴀᴄᴋ", callback_data="settingsback_helper")
+                    styled_button("🔙 Bᴀᴄᴋ", callback_data="settingsback_helper", style=enums.ButtonStyle.PRIMARY)
                 ]
             ]
         )
@@ -115,11 +115,14 @@ async def owner_page_cb(client, callback_query):
         await callback_query.answer(f"❌ Error: {e}", show_alert=True)
 
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import CallbackQuery
 from ShrutiMusic import app
 from ShrutiMusic.core.call import Nand
 from ShrutiMusic.utils import bot_sys_stats
 import time, psutil, asyncio
+
+from config import styled_button
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -303,9 +306,10 @@ async def del_back_playlist(client, CallbackQuery, _):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
+                        styled_button(
                             text=f"👍 {get_upvotes}",
                             callback_data=f"ADMIN  UpVote|{chat_id}_{counter}",
+                            style=enums.ButtonStyle.PRIMARY,
                         )
                     ]
                 ]

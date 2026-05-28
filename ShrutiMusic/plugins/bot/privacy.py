@@ -1,8 +1,10 @@
-from pyrogram import Client, filters
+from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.enums import ParseMode
 from ShrutiMusic import app
 import config
+
+from config import styled_button
 
 TEXT = f"""
 🔒 **Privacy Policy for {app.mention} !**
@@ -17,8 +19,9 @@ async def privacy(client, message: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(
-                    "View Privacy Policy", url=config.SUPPORT_GROUP
+                styled_button(
+                    "View Privacy Policy", url=config.SUPPORT_GROUP,
+                    style=enums.ButtonStyle.SUCCESS,
                 )
             ]
         ]

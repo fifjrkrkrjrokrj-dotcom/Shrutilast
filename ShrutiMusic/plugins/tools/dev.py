@@ -7,9 +7,12 @@ from inspect import getfullargspec
 from io import StringIO
 from time import time
 from pyrogram import filters
+from pyrogram import enums
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from ShrutiMusic import app
 from config import OWNER_ID, ERROR_FORMAT
+
+from config import styled_button
 
 async def aexec(code, client, message):
     exec(
@@ -74,9 +77,10 @@ async def executor(client: app, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
+                    styled_button(
                         text="⏳",
                         callback_data=f"runtime {t2-t1} Seconds",
+                        style=enums.ButtonStyle.PRIMARY,
                     )
                 ]
             ]
@@ -94,13 +98,15 @@ async def executor(client: app, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(
+                    styled_button(
                         text="⏳",
                         callback_data=f"runtime {round(t2-t1, 3)} Seconds",
+                        style=enums.ButtonStyle.PRIMARY,
                     ),
-                    InlineKeyboardButton(
+                    styled_button(
                         text="🗑",
                         callback_data=f"forceclose abc|{message.from_user.id}",
+                        style=enums.ButtonStyle.PRIMARY,
                     ),
                 ]
             ]
